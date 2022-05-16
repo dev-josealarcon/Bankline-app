@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="jumbotron">
+      <h1 class="display-6">Movement</h1>
+      <p class="lead-1">Adding a new move</p>
+      <hr class="my-2">
+
+
+          <div class="col-md-3">
+            <label for="iDate" class="form-label">Date</label>
+            <input type="date" [(ngModel)]="dateTime" class="form-control" id="iDate">
+          </div>
+          <div class="col-md-9">
+            <label for="iAccountHolder" class="form-label">AccountHolder</label>
+            <select id="iAccountHolder" [(ngModel)]="accountHolder" class="form-select">
+              <option *ngFor="let c of accountHolders" [ngValue]="c">{{c.cpf}}-{{c.name}}</option>
+            </select>
+          </div>
+          <div class="col-12">
+            <label for="iDescription" class="form-label">Description</label>
+            <input type="text" [(ngModel)]="description" class="form-control" id="iDescription" placeholder="Enter a description">
+          </div>
+          <div class="col-md-3">
+            <label for="iType" class="form-label">Movement Type</label>
+            <select id="iType" [(ngModel)]="type" class="form-select">
+              <option selected>INCOME</option>
+              <option>EXPENSE</option>
+          </select>
+          </div>
+          <div class="col-md-2">
+            <label for="iValor" class="form-label">US$ Valor</label>
+            <input type="text" [(ngModel)]="valor" currencyMask class="form-control" id="iValor">
+          </div>
+          <br>
+          <div class="d-grid gap-2 d-md-flex ">
+              <button class="btn btn-outline-primary me-md-2" (click)="save()" type="button">Confirm</button>
+              <a routerLink="/movements" class="btn btn-outline-secondary">Cancel</a>
+            </div>
+
+    </div>
+
+</div>

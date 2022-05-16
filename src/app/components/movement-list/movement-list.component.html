@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="display-6">Movements</h1>
+    <p class="lead-1">List of transactions by Account Holder</p>
+    <hr class="my-2">
+    <div class="input-group">
+      <select  id="iAccountHolder" [(ngModel)]="accountHolder" class="form-select">
+        <option *ngFor="let c of accountHolders" [ngValue]="c" >{{c.cpf}}-{{c.name}}</option>
+      </select>
+    <button class="btn btn-outline-secondary me-md-2 btn-sm" type="button" (click)="listMovements()">Search</button>
+    <a class="btn btn-outline-primary btn-sm" routerLink="/movements-new">New Movement</a>
+    <a class="btn btn-outline-primary btn-sm" routerLink="/accountHolders">Account Holders</a>
+  </div>
+<table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Date Time</th>
+      <th scope="col">Description</th>
+      <th scope="col">Valor</th>
+      <th scope="col">Type</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of movements; index as i">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{ item.dateTime | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
+      <td>{{ item.description }}</td>
+      <td [ngStyle]="{'color':item.type === 'INCOME' ? 'blue' : 'red'}">{{ item.valor | currency:'US$' }}</td>
+      <td>{{ item.type }}</td>
+    </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
